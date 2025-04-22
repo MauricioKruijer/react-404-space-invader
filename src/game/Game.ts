@@ -55,6 +55,13 @@ export class Game {
       })
     })
 
+    this.invaderShots.forEach((shot) => {
+      if (this.player.active && collides(shot, this.player)) {
+        this.player.destroy(this);
+        shot.active = false;
+      }
+    });
+
     this.invaders.forEach((invader) => {
       if (!this.lost && invader.active) {
         invader.update(this)
