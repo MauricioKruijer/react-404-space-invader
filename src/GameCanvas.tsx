@@ -1,9 +1,12 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from 'react'
 import {Game} from './game/Game.ts'
 
 export const GameCanvas = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const gameRef = useRef<Game | null>(null)
+  const animationRef = useRef<number>(0)
+
+  const [restartKey, setRestartKey] = useState(0) // trigger re-init
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -31,7 +34,22 @@ export const GameCanvas = () => {
     return () => {
       cancelAnimationFrame(animationFrameId)
     }
-  }, [])
+  }, [restartKey])
 
-  return <canvas ref={canvasRef} id="space-invaders" />
+  const handleRestart = () => {
+    setRestartKey((prev) => prev + 1)
+  }
+
+  return (
+    <>
+      <p className="center">
+        Space Invaders destroyed this page! Take revenge on them!<br/>
+        Use <span className="label label-danger">Space</span> to shoot and <span
+        className="label label-danger">←</span>&#160;<span className="label label-danger">→</span> to
+        move!&#160;&#160;&#160;
+        <button className="btn" onClick={handleRestart}>Restart</button>
+      </p>
+      <canvas ref={canvasRef} id="space-invaders"/>
+    </>
+  )
 }
