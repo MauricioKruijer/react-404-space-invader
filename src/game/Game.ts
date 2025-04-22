@@ -99,6 +99,13 @@ export class Game {
       this.ctx.textAlign = "center"
       this.ctx.font = "40px monospace"
       this.ctx.fillText("You lost", this.width / 2, this.height / 2)
+      this.ctx.font = "20px monospace"
+      this.ctx.fillText(`Points: ${this.kills}`, this.width / 2, this.height / 2 + 30)
     }
+
+    this.ctx.fillStyle = "black";
+    this.ctx.font = "14px monospace";
+    this.ctx.textAlign = "right";
+    this.ctx.fillText(`Points: ${this.kills}`, this.width - 10, this.height - 10);
   }
 }
