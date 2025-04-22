@@ -2,6 +2,7 @@ import { Player } from "./Player"
 import { Invader } from "./Invader"
 import { Projectile } from "./Projectile"
 import {createInvaders} from './createInvaders.ts'
+import {collides} from './utils.ts'
 
 export class Game {
   width: number
@@ -44,6 +45,15 @@ export class Game {
 
   update() {
     this.player.update(this)
+
+    this.player.projectiles.forEach((projectile) => {
+      this.invaders.forEach((invader) => {
+        if (invader.active && collides(projectile, invader)) {
+          invader.destroy(this)
+          projectile.active = false
+        }
+      })
+    })
 
     this.invaders.forEach((invader) => {
       if (!this.lost && invader.active) {
