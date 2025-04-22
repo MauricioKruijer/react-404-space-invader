@@ -22,8 +22,8 @@ export const GameCanvas = () => {
 
     let animationFrameId: number
     const loop = () => {
-      // game.update()
-      // game.draw()
+      game.update()
+      game.draw()
       animationFrameId = requestAnimationFrame(loop)
     }
     loop()
