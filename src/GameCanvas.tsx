@@ -33,5 +33,5 @@ export const GameCanvas = () => {
     }
   }, [])
 
-  return <canvas ref={canvasRef} style={{ background: "red" }} id="space-invaders" />
+  return <canvas ref={canvasRef} id="space-invaders" />
 }

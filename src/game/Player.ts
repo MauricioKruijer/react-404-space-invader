@@ -54,7 +54,7 @@ export class Player {
   draw(ctx: CanvasRenderingContext2D) {
     if (!this.active) return
 
-    ctx.fillStyle = "white"
+    ctx.fillStyle = "black"
     ctx.fillRect(this.x, this.y, this.width, this.height)
 
     ctx.fillRect(this.x - 2, this.y + 2, 20, 6)

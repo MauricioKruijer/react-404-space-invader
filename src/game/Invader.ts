@@ -46,7 +46,7 @@ export class Invader {
 
   draw(ctx: CanvasRenderingContext2D) {
     if (this.active) {
-      ctx.fillStyle = "lime"
+      ctx.fillStyle = "black"
       ctx.fillRect(this.x, this.y, this.width, this.height)
     }
   }
